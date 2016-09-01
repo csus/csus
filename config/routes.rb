@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
-  resources :hospitals
 
   get "reviews/add_csus" => 'reviews#add_csus', :as => :add_csus
   resources :reviews do

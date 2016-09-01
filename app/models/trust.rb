@@ -1,7 +1,6 @@
 class Trust < ActiveRecord::Base
   require 'csv'
   # associations
-  has_many :hospitals
 
   # validations
   validates :trust_legal_name, presence: true

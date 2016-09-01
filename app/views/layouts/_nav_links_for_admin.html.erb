@@ -3,7 +3,6 @@
   <!-- admin-only navigation links -->
   <% if current_user.admin? %>
     <li><%= link_to 'Trusts', trusts_path %></li>
-    <li><%= link_to 'Hospitals', hospitals_path %></li>
     <li><%= link_to 'Suppliers', system_suppliers_path %></li>
     <li><%= link_to 'Systems', systems_path %></li>
     <li><%= link_to 'Reviews', reviews_path %></li>
