@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713171752) do
+ActiveRecord::Schema.define(version: 20160901072413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 20160713171752) do
 
   add_index "systems", ["system_supplier_id"], name: "index_systems_on_system_supplier_id", using: :btree
 
+  create_table "trust_systems", force: :cascade do |t|
+    t.integer  "trust_id"
+    t.integer  "system_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "trust_systems", ["system_id"], name: "index_trust_systems_on_system_id", using: :btree
+  add_index "trust_systems", ["trust_id"], name: "index_trust_systems_on_trust_id", using: :btree
+
   create_table "trusts", force: :cascade do |t|
     t.decimal  "latitude"
     t.decimal  "longitude"
@@ -130,4 +140,6 @@ ActiveRecord::Schema.define(version: 20160713171752) do
   add_foreign_key "reviews", "systems"
   add_foreign_key "reviews", "users"
   add_foreign_key "systems", "system_suppliers"
+  add_foreign_key "trust_systems", "systems"
+  add_foreign_key "trust_systems", "trusts"
 end

@@ -2,7 +2,8 @@ class System < ActiveRecord::Base
   # associations
   belongs_to :system_supplier
   has_many :reviews
-  has_many :system_implementations
+  has_many :trust_systems
+  has_many :trusts, :through => :trust_systems
 
   # validations
   validates :system_name, presence: true
