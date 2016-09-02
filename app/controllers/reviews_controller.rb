@@ -14,8 +14,12 @@ class ReviewsController < ApplicationController
   end
 
   def import
-    Review.import(params[:file])
-    redirect_to reviews_path, notice: "Reviews imported"
+    if params[:file]
+      Review.import(params[:file])
+      redirect_to reviews_path, notice: "CSV imported"
+    else
+      redirect_to reviews_path, alert: "Please select a CSV file for import"
+    end
   end
 
   # GET /reviews/new

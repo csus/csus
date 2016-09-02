@@ -31,8 +31,12 @@ class SystemsController < ApplicationController
   end
 
   def import
-    System.import(params[:file])
-    redirect_to systems_path, notice: "Systems imported"
+    if params[:file]
+      System.import(params[:file])
+      redirect_to systems_path, notice: "CSV imported"
+    else
+      redirect_to systems_path, alert: "Please select a CSV file for import"
+    end
   end
 
   private

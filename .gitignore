@@ -12,11 +12,11 @@
 !/log/.keep
 /tmp
 
-# Ignore environment variables
+# Ignore csus environment variables
 .env
 
-#ignore database dumps
+# Ignore csus database dumps
 *.sql
 
-#ignore non-trackable data files
+# Ignore non-trackable csus data files
 /data

@@ -38,8 +38,12 @@ class TrustsController < ApplicationController
   end
 
   def import
-    Trust.import(params[:file])
-    redirect_to trusts_path, notice: "Trusts imported"
+    if params[:file]
+      Trust.import(params[:file])
+      redirect_to trusts_path, notice: "CSV imported"
+    else
+      redirect_to trusts_path, alert: "Please select a CSV file for import"
+    end
   end
 
   def destroy
