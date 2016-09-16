@@ -12,90 +12,57 @@
     </div>
   <% end %>
 
-  <fieldset>
-    <div class="form-group">
+  <div>
 
-      <div class="dropdown">
-        <%= f.collection_select :system_id, System.where(system_name: "SystmOne Child Health (TPP)"), :id, :system_name, label: "Which system would you like to review? Your Trust's EPR is:" %>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Review Details</a></li>
+      <li role="presentation"><a href="#csus" aria-controls="csus" role="tab" data-toggle="tab">Clinical Usability</a></li>
+      <li role="presentation"><a href="#sus" aria-controls="sus" role="tab" data-toggle="tab">Systems Usability</a></li>
+      <li role="presentation"><a href="#freetext" aria-controls="freetext" role="tab" data-toggle="tab">Free Text Review</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane active" id="review">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <p class="lead">
+              Your current Trust is set to <br/> </br>
+              <strong><%= Trust.find(current_user.trust_id).trust_legal_name %></strong>
+            </p>
+          </div>
+
+          <div class="panel-body">
+
+            <div class="dropdown">
+              <%= f.collection_select :system_id, System.where(system_name: "SystmOne Child Health (TPP)"), :id, :system_name, label: "Which system would you like to review? Your Trust's EPR is:" %>
+            </div>
+
+            <div>
+              <p>Star Ratings are a simple and quick way to rate a system</p>
+              <%= f.number_field :star_rating, class: "form-control" %>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      <%= f.text_area :review_positive_text, class: "form-control", label: "What do you like most about the system?", rows: "5" %>
+      <div role="tabpanel" class="tab-pane" id="csus">
+        <%= render partial: 'csus_form', locals: { f: f } %>
+      </div>
 
-      <%= f.text_area :review_negative_text, class: "form-control", label: "What would you change about the system?", rows: "5" %>
+      <div role="tabpanel" class="tab-pane" id="sus">...</div>
 
-    </div>
-  </fieldset>
-
-  <!-- cSUS Form -->
-  <div class="panel panel-default">
-    <div class="panel-heading"><p class="lead">The Clinical Usability Score is a is a measure of the impact the system has on <strong>clinical</strong> workflow.</p></div>
-
-    <div class="panel-body">
-      <%= f.form_group :reduces_the_risk_of_clinical_error,
-        label: { text: "In my opinion, the software reduces the risk of clinical error." } do %><br/>
-
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 4, label: "   Strongly Agree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 3, label: "            Agree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 2, label: "       Don't Know", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 1, label: "         Disagree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 0, label: "Strongly Disagree", inline: true %>
-
-      <% end %>
-
-      <%= f.form_group :support_is_hard_to_access,
-        label: { text: "Effective support for this software is hard to access in a clinically-appropriate timescale." } do %><br/>
-
-        <%= f.radio_button :support_is_hard_to_access, 4, label: "Strongly Disagree", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 3, label: "Disagree", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 1, label: "Age", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 0, label: "Strongly Agree", inline: true %>
-
-      <% end %>
-
-      <%= f.form_group :improves_quality_clinical_care,
-        label: { text: "In my opinion, the software improves the quality of clinical care I can provide." } do %><br/>
-
-        <%= f.radio_button :improves_quality_clinical_care, 4, label: "Strongly Agree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 3, label: "Agree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 1, label: "Disagree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 0, label: "Strongly Disagree", inline: true %>
-
-      <% end %>
-
-      <%= f.form_group :consultation_adversely_affected,
-        label: { text: "The quality of the interaction/consultation with the patient is adversely affected by the use of this software." } do %><br/>
-
-        <%= f.radio_button :consultation_adversely_affected, 4, label: "Strongly Disagree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 3, label: "Disagree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 1, label: "Agree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 0, label: "Strongly Agree", inline: true %>
-
-      <% end %>
-
-      <%= f.form_group :gives_me_key_information_needed,
-        label: { text: "Using the software gives me key information I need on patient’s history, diagnosed conditions, current care and treatment plan." } do %><br/>
-
-        <%= f.radio_button :gives_me_key_information_needed, 4, label: "Strongly Agree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 3, label: "Agree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 1, label: "Disagree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 0, label: "Strongly Disagree", inline: true %>
-
-      <% end %>
+      <div role="tabpanel" class="tab-pane" id="freetext">
+        <%= render partial: 'free_text_form', locals: { f: f } %>
+      </div>
 
     </div>
-    
-  </div> <!-- class="panel panel-default" -->
 
-  <fieldset>
-    <p>Star Ratings are a simple and quick way to rate a system</p>
-    <div class="form-group">
-      <%= f.number_field :star_rating, class: "form-control" %>
-    </div>
-  </fieldset>
+  </div>
 
   <div class="actions">
     <%= f.submit "Submit Review", class: "btn btn-primary" %>
