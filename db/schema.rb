@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916061701) do
+ActiveRecord::Schema.define(version: 20160916175106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "csus_scores", force: :cascade do |t|
+    t.integer  "reduces_the_risk_of_clinical_error"
+    t.integer  "support_is_hard_to_access"
+    t.integer  "improves_quality_clinical_care"
+    t.integer  "consultation_adversely_affected"
+    t.integer  "gives_me_key_information_needed"
+    t.integer  "total_csus_score"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "review_id"
+  end
+
+  add_index "csus_scores", ["review_id"], name: "index_csus_scores_on_review_id", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.text     "hospital_name"
@@ -153,6 +167,7 @@ ActiveRecord::Schema.define(version: 20160916061701) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "csus_scores", "reviews"
   add_foreign_key "hospitals", "trusts"
   add_foreign_key "reviews", "systems"
   add_foreign_key "reviews", "users"

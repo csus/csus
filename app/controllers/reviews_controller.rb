@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
   def new
     @review = current_user.reviews.build
     @review.sus_scores.build
+    @review.csus_scores.build
   end
 
   def compare
@@ -40,8 +41,8 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = current_user.reviews.new(review_params)
-    @review.total_csus_score=2.5*(@review.reduces_the_risk_of_clinical_error+@review.support_is_hard_to_access+@review.improves_quality_clinical_care+@review.consultation_adversely_affected+@review.gives_me_key_information_needed)
-    @review.sus_scores.first.total_sus_score=5
+    @review.csus_scores.first.total_csus_score=2.5
+    @review.sus_scores.first.total_sus_score=5.5
 
     respond_to do |format|
       if @review.save
@@ -121,8 +122,18 @@ class ReviewsController < ApplicationController
           :the_system_was_very_cumbersome_to_use,
           :i_feel_confident_using_this_system,
           :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with,
-          :total_sus_score
-          ]
-        )
+          :total_sus_score,
+          :_delete
+        ],
+        :csus_scores_attributes => [
+          :reduces_the_risk_of_clinical_error,
+          :support_is_hard_to_access,
+          :improves_quality_clinical_care,
+          :consultation_adversely_affected,
+          :gives_me_key_information_needed,
+          :total_csus_score,
+          :_delete
+        ]
+      )
     end
 end

@@ -5,58 +5,62 @@
     </div>
 
     <div class="panel-body">
-      <%= f.form_group :reduces_the_risk_of_clinical_error,
-        label: { text: "In my opinion, the software reduces the risk of clinical error." } do %><br/>
+      <%= f.fields_for :csus_scores do |csus_score_form| %>
 
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 4, label: "   Strongly Agree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 3, label: "            Agree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 2, label: "       Don't Know", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 1, label: "         Disagree", inline: true %>
-          <%= f.radio_button :reduces_the_risk_of_clinical_error, 0, label: "Strongly Disagree", inline: true %>
+        <%= csus_score_form.form_group :reduces_the_risk_of_clinical_error,
+          label: { text: "In my opinion, the software reduces the risk of clinical error." } do %><br/>
 
-      <% end %>
+            <%= csus_score_form.radio_button :reduces_the_risk_of_clinical_error, 4, label: "   Strongly Agree", inline: true %>
+            <%= csus_score_form.radio_button :reduces_the_risk_of_clinical_error, 3, label: "            Agree", inline: true %>
+            <%= csus_score_form.radio_button :reduces_the_risk_of_clinical_error, 2, label: "       Don't Know", inline: true %>
+            <%= csus_score_form.radio_button :reduces_the_risk_of_clinical_error, 1, label: "         Disagree", inline: true %>
+            <%= csus_score_form.radio_button :reduces_the_risk_of_clinical_error, 0, label: "Strongly Disagree", inline: true %>
 
-      <%= f.form_group :support_is_hard_to_access,
-        label: { text: "Effective support for this software is hard to access in a clinically-appropriate timescale." } do %><br/>
+        <% end %>
 
-        <%= f.radio_button :support_is_hard_to_access, 4, label: "Strongly Disagree", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 3, label: "Disagree", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 1, label: "Agree", inline: true %>
-        <%= f.radio_button :support_is_hard_to_access, 0, label: "Strongly Agree", inline: true %>
+        <%= csus_score_form.form_group :support_is_hard_to_access,
+          label: { text: "Effective support for this software is hard to access in a clinically-appropriate timescale." } do %><br/>
 
-      <% end %>
+          <%= csus_score_form.radio_button :support_is_hard_to_access, 4, label: "Strongly Disagree", inline: true %>
+          <%= csus_score_form.radio_button :support_is_hard_to_access, 3, label: "Disagree", inline: true %>
+          <%= csus_score_form.radio_button :support_is_hard_to_access, 2, label: "Don't Know", inline: true %>
+          <%= csus_score_form.radio_button :support_is_hard_to_access, 1, label: "Agree", inline: true %>
+          <%= csus_score_form.radio_button :support_is_hard_to_access, 0, label: "Strongly Agree", inline: true %>
 
-      <%= f.form_group :improves_quality_clinical_care,
-        label: { text: "In my opinion, the software improves the quality of clinical care I can provide." } do %><br/>
+        <% end %>
 
-        <%= f.radio_button :improves_quality_clinical_care, 4, label: "Strongly Agree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 3, label: "Agree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 1, label: "Disagree", inline: true %>
-        <%= f.radio_button :improves_quality_clinical_care, 0, label: "Strongly Disagree", inline: true %>
+        <%= csus_score_form.form_group :improves_quality_clinical_care,
+          label: { text: "In my opinion, the software improves the quality of clinical care I can provide." } do %><br/>
 
-      <% end %>
+          <%= csus_score_form.radio_button :improves_quality_clinical_care, 4, label: "Strongly Agree", inline: true %>
+          <%= csus_score_form.radio_button :improves_quality_clinical_care, 3, label: "Agree", inline: true %>
+          <%= csus_score_form.radio_button :improves_quality_clinical_care, 2, label: "Don't Know", inline: true %>
+          <%= csus_score_form.radio_button :improves_quality_clinical_care, 1, label: "Disagree", inline: true %>
+          <%= csus_score_form.radio_button :improves_quality_clinical_care, 0, label: "Strongly Disagree", inline: true %>
 
-      <%= f.form_group :consultation_adversely_affected,
-        label: { text: "The quality of the interaction/consultation with the patient is adversely affected by the use of this software." } do %><br/>
+        <% end %>
 
-        <%= f.radio_button :consultation_adversely_affected, 4, label: "Strongly Disagree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 3, label: "Disagree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 1, label: "Agree", inline: true %>
-        <%= f.radio_button :consultation_adversely_affected, 0, label: "Strongly Agree", inline: true %>
+        <%= csus_score_form.form_group :consultation_adversely_affected,
+          label: { text: "The quality of the interaction/consultation with the patient is adversely affected by the use of this software." } do %><br/>
 
-      <% end %>
+          <%= csus_score_form.radio_button :consultation_adversely_affected, 4, label: "Strongly Disagree", inline: true %>
+          <%= csus_score_form.radio_button :consultation_adversely_affected, 3, label: "Disagree", inline: true %>
+          <%= csus_score_form.radio_button :consultation_adversely_affected, 2, label: "Don't Know", inline: true %>
+          <%= csus_score_form.radio_button :consultation_adversely_affected, 1, label: "Agree", inline: true %>
+          <%= csus_score_form.radio_button :consultation_adversely_affected, 0, label: "Strongly Agree", inline: true %>
 
-      <%= f.form_group :gives_me_key_information_needed,
-        label: { text: "Using the software gives me key information I need on patient’s history, diagnosed conditions, current care and treatment plan." } do %><br/>
+        <% end %>
 
-        <%= f.radio_button :gives_me_key_information_needed, 4, label: "Strongly Agree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 3, label: "Agree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 2, label: "Don't Know", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 1, label: "Disagree", inline: true %>
-        <%= f.radio_button :gives_me_key_information_needed, 0, label: "Strongly Disagree", inline: true %>
+        <%= csus_score_form.form_group :gives_me_key_information_needed,
+          label: { text: "Using the software gives me key information I need on patient’s history, diagnosed conditions, current care and treatment plan." } do %><br/>
+
+          <%= csus_score_form.radio_button :gives_me_key_information_needed, 4, label: "Strongly Agree", inline: true %>
+          <%= csus_score_form.radio_button :gives_me_key_information_needed, 3, label: "Agree", inline: true %>
+          <%= csus_score_form.radio_button :gives_me_key_information_needed, 2, label: "Don't Know", inline: true %>
+          <%= csus_score_form.radio_button :gives_me_key_information_needed, 1, label: "Disagree", inline: true %>
+          <%= csus_score_form.radio_button :gives_me_key_information_needed, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
 
       <% end %>
 
