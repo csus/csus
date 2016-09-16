@@ -54,7 +54,9 @@
         <%= render partial: 'csus_form', locals: { f: f } %>
       </div>
 
-      <div role="tabpanel" class="tab-pane" id="sus">...</div>
+      <div role="tabpanel" class="tab-pane" id="sus">
+        <%= render partial: 'sus_form', locals: { f: f } %>
+      </div>
 
       <div role="tabpanel" class="tab-pane" id="freetext">
         <%= render partial: 'free_text_form', locals: { f: f } %>
@@ -62,10 +64,6 @@
 
     </div>
 
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit Review", class: "btn btn-primary" %>
   </div>
 
 <% end %>

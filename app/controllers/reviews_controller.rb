@@ -24,14 +24,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
-  end
-
-  def add_csus
-    @review = current_user.reviews.new(review_params)
-    if @review.save
-      render :add_csus
-    end
+    @review = current_user.reviews.build
+    @review.sus_scores.build
   end
 
   def compare
@@ -47,6 +41,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     @review.total_csus_score=2.5*(@review.reduces_the_risk_of_clinical_error+@review.support_is_hard_to_access+@review.improves_quality_clinical_care+@review.consultation_adversely_affected+@review.gives_me_key_information_needed)
+    @review.sus_scores.first.total_sus_score=5
 
     respond_to do |format|
       if @review.save
@@ -113,6 +108,21 @@ class ReviewsController < ApplicationController
         :trust_type,
         :trust_name,
         :system_name,
-        :csus_response_id)
+        :csus_response_id,
+        :sus_scores_attributes => [
+          :id,
+          :i_would_like_to_use_this_system_frequently,
+          :the_system_is_unnecessarily_complex,
+          :the_system_is_easy_to_use,
+          :i_need_frequent_technical_support_to_use_this_system,
+          :the_various_functions_in_this_system_are_well_integrated,
+          :there_is_too_much_inconsistency_in_this_system,
+          :most_people_would_learn_to_use_this_system_very_quickly,
+          :the_system_was_very_cumbersome_to_use,
+          :i_feel_confident_using_this_system,
+          :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with,
+          :total_sus_score
+          ]
+        )
     end
 end
