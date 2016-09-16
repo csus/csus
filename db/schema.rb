@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901072413) do
+ActiveRecord::Schema.define(version: 20160916060251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,25 @@ ActiveRecord::Schema.define(version: 20160901072413) do
 
   add_index "reviews", ["system_id"], name: "index_reviews_on_system_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "sus", force: :cascade do |t|
+    t.integer  "i_would_like_to_use_this_system_frequently"
+    t.integer  "the_system_is_unnecessarily_complex"
+    t.integer  "the_system_is_easy_to_use"
+    t.integer  "i_need_frequent_technical_support_to_use_this_system"
+    t.integer  "the_various_functions_in_this_system_are_well_integrated"
+    t.integer  "there_is_too_much_inconsistency_in_this_system"
+    t.integer  "most_people_would_learn_to_use_this_system_very_quickly"
+    t.integer  "the_system_was_very_cumbersome_to_use"
+    t.integer  "i_feel_confident_using_this_system"
+    t.integer  "i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with"
+    t.decimal  "total_sus_score",                                                 precision: 10, scale: 1
+    t.integer  "review_id"
+    t.datetime "created_at",                                                                               null: false
+    t.datetime "updated_at",                                                                               null: false
+  end
+
+  add_index "sus", ["review_id"], name: "index_sus_on_review_id", using: :btree
 
   create_table "system_suppliers", force: :cascade do |t|
     t.text     "supplier_name"
@@ -139,6 +158,7 @@ ActiveRecord::Schema.define(version: 20160901072413) do
   add_foreign_key "hospitals", "trusts"
   add_foreign_key "reviews", "systems"
   add_foreign_key "reviews", "users"
+  add_foreign_key "sus", "reviews"
   add_foreign_key "systems", "system_suppliers"
   add_foreign_key "trust_systems", "systems"
   add_foreign_key "trust_systems", "trusts"
