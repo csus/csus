@@ -27,10 +27,20 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build
     @review.sus_scores.build
     @review.csus_scores.build
+    if current_user.trust_id
+      @trust_id = current_user.trust_id
+    else
+      @trust_id = 11	 #debugging placeholder value
+    end
   end
 
   def compare
-    @other_reviews = Review.where(system_name: "SystmOne Child Health (TPP)")
+    @other_reviews = Review.where(system_name: current_user.reviews.last.system_name)
+    if current_user.trust_id
+      @trust_id = current_user.trust_id
+    else
+      @trust_id = 11	 #debugging placeholder value
+    end
   end
 
   # GET /reviews/1/edit

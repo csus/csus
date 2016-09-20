@@ -6,8 +6,8 @@
     <h3 class="panel-title">Compare Your Review</h3>
   </div>
   <div class="panel-body">
-    <p class="h4">You reviewed <strong><%= System.find(Review.last.system_id).system_name %></strong> at your current trust <strong><%= Trust.find(User.find(Review.last.user_id).trust_id).trust_legal_name %></strong></p>
-    <p class="h4">You have rated this system with a Clinical Usability Score of <%= Review.last.total_csus_score %> and a Systems Usability Score of <%= Review.last.sus_scores.first.total_sus_score %></p>
+    <p class="h4">You reviewed <strong><%= System.find(current_user.reviews.last.system_id).system_name %></strong> at your current trust <strong><%= Trust.find(@trust_id).trust_legal_name %></strong></p>
+    <p class="h4">You have rated this system with a Clinical Usability Score of <%= Review.last.total_csus_score %> and a Systems Usability Score of <%= current_user.reviews.last.sus_scores.first.total_sus_score %></p>
 
     <p class="h4">The average Clinical Usability Score (based on previous reviews) for this system is <%= @other_reviews.average(:sus_score_placeholder) %></p>
   </div>
