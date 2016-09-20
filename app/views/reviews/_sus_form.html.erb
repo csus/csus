@@ -1,0 +1,123 @@
+  <!-- SUS Form -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="lead">The Systems Usability Scale is a measure of usability which is used across the whole Tech industry. Using this scale allows us to compare the usability of Health software with the usability of software in other sectors.</p>
+    </div>
+
+    <div class="panel-body">
+      <%= f.fields_for :sus_scores do |sus_score_form| %>
+
+        <%= sus_score_form.form_group :i_would_like_to_use_this_system_frequently,
+          label: { text: "I would like to use this system frequently." } do %><br/>
+
+            <%= sus_score_form.radio_button :i_would_like_to_use_this_system_frequently, 4, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_would_like_to_use_this_system_frequently, 3, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_would_like_to_use_this_system_frequently, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :i_would_like_to_use_this_system_frequently, 1, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :i_would_like_to_use_this_system_frequently, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :the_system_is_unnecessarily_complex,
+          label: { text: "The system is unnecessarily complex." } do %><br/>
+
+            <%= sus_score_form.radio_button :the_system_is_unnecessarily_complex, 0, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_unnecessarily_complex, 1, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_unnecessarily_complex, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_unnecessarily_complex, 3, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_unnecessarily_complex, 4, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :the_system_is_easy_to_use,
+          label: { text: "The system is easy to use." } do %><br/>
+
+            <%= sus_score_form.radio_button :the_system_is_easy_to_use, 4, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_easy_to_use, 3, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_easy_to_use, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_easy_to_use, 1, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_is_easy_to_use, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :i_need_frequent_technical_support_to_use_this_system,
+          label: { text: "I need frequent technical support to use this system." } do %><br/>
+
+            <%= sus_score_form.radio_button :i_need_frequent_technical_support_to_use_this_system, 0, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_need_frequent_technical_support_to_use_this_system, 1, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_need_frequent_technical_support_to_use_this_system, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :i_need_frequent_technical_support_to_use_this_system, 3, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :i_need_frequent_technical_support_to_use_this_system, 4, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :the_various_functions_in_this_system_are_well_integrated,
+          label: { text: "The various functions in this system are well integrated." } do %><br/>
+
+            <%= sus_score_form.radio_button :the_various_functions_in_this_system_are_well_integrated, 4, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_various_functions_in_this_system_are_well_integrated, 3, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_various_functions_in_this_system_are_well_integrated, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :the_various_functions_in_this_system_are_well_integrated, 1, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :the_various_functions_in_this_system_are_well_integrated, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :there_is_too_much_inconsistency_in_this_system,
+          label: { text: "There is too much inconsistency in this system." } do %><br/>
+
+            <%= sus_score_form.radio_button :there_is_too_much_inconsistency_in_this_system, 0, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :there_is_too_much_inconsistency_in_this_system, 1, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :there_is_too_much_inconsistency_in_this_system, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :there_is_too_much_inconsistency_in_this_system, 3, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :there_is_too_much_inconsistency_in_this_system, 4, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :most_people_would_learn_to_use_this_system_very_quickly,
+          label: { text: "Most people would learn to use this system very quickly." } do %><br/>
+
+            <%= sus_score_form.radio_button :most_people_would_learn_to_use_this_system_very_quickly, 4, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :most_people_would_learn_to_use_this_system_very_quickly, 3, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :most_people_would_learn_to_use_this_system_very_quickly, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :most_people_would_learn_to_use_this_system_very_quickly, 1, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :most_people_would_learn_to_use_this_system_very_quickly, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :the_system_was_very_cumbersome_to_use,
+          label: { text: "The system was very cumbersome to use." } do %><br/>
+
+            <%= sus_score_form.radio_button :the_system_was_very_cumbersome_to_use, 0, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_was_very_cumbersome_to_use, 1, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_was_very_cumbersome_to_use, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :the_system_was_very_cumbersome_to_use, 3, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :the_system_was_very_cumbersome_to_use, 4, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :i_feel_confident_using_this_system,
+          label: { text: "I feel confident using this system." } do %><br/>
+
+            <%= sus_score_form.radio_button :i_feel_confident_using_this_system, 4, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_feel_confident_using_this_system, 3, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_feel_confident_using_this_system, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :i_feel_confident_using_this_system, 1, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :i_feel_confident_using_this_system, 0, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+        <%= sus_score_form.form_group :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with,
+          label: { text: "I needed to learn a lot of things before I could get going with this system." } do %><br/>
+
+            <%= sus_score_form.radio_button :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with, 0, label: "   Strongly Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with, 1, label: "            Agree", inline: true %>
+            <%= sus_score_form.radio_button :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with, 2, label: "       Don't Know", inline: true %>
+            <%= sus_score_form.radio_button :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with, 3, label: "         Disagree", inline: true %>
+            <%= sus_score_form.radio_button :i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with, 4, label: "Strongly Disagree", inline: true %>
+
+        <% end %>
+
+      <% end %>
+    </div> <!-- class="panel-body" -->
+
+  </div> <!-- class="panel panel-default" -->

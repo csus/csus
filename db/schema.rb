@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901072413) do
+ActiveRecord::Schema.define(version: 20160916175106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "csus_scores", force: :cascade do |t|
+    t.integer  "reduces_the_risk_of_clinical_error"
+    t.integer  "support_is_hard_to_access"
+    t.integer  "improves_quality_clinical_care"
+    t.integer  "consultation_adversely_affected"
+    t.integer  "gives_me_key_information_needed"
+    t.integer  "total_csus_score"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "review_id"
+  end
+
+  add_index "csus_scores", ["review_id"], name: "index_csus_scores_on_review_id", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.text     "hospital_name"
@@ -58,6 +72,23 @@ ActiveRecord::Schema.define(version: 20160901072413) do
 
   add_index "reviews", ["system_id"], name: "index_reviews_on_system_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "sus_scores", force: :cascade do |t|
+    t.integer "i_would_like_to_use_this_system_frequently"
+    t.integer "the_system_is_unnecessarily_complex"
+    t.integer "the_system_is_easy_to_use"
+    t.integer "i_need_frequent_technical_support_to_use_this_system"
+    t.integer "the_various_functions_in_this_system_are_well_integrated"
+    t.integer "there_is_too_much_inconsistency_in_this_system"
+    t.integer "most_people_would_learn_to_use_this_system_very_quickly"
+    t.integer "the_system_was_very_cumbersome_to_use"
+    t.integer "i_feel_confident_using_this_system"
+    t.integer "i_needed_to_learn_a_lot_of_things_before_i_could_get_going_with"
+    t.decimal "total_sus_score",                                                 precision: 10, scale: 1
+    t.integer "review_id"
+  end
+
+  add_index "sus_scores", ["review_id"], name: "index_sus_scores_on_review_id", using: :btree
 
   create_table "system_suppliers", force: :cascade do |t|
     t.text     "supplier_name"
@@ -136,9 +167,11 @@ ActiveRecord::Schema.define(version: 20160901072413) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "csus_scores", "reviews"
   add_foreign_key "hospitals", "trusts"
   add_foreign_key "reviews", "systems"
   add_foreign_key "reviews", "users"
+  add_foreign_key "sus_scores", "reviews"
   add_foreign_key "systems", "system_suppliers"
   add_foreign_key "trust_systems", "systems"
   add_foreign_key "trust_systems", "trusts"
