@@ -31,7 +31,7 @@
           <div class="panel-heading">
             <p class="lead">
               Your current Trust is set to <br/> </br>
-              <strong><%= Trust.find(current_user.trust_id).trust_legal_name %></strong>
+              <strong><%= Trust.find(@trust_id).trust_legal_name %></strong>
             </p>
           </div>
 
