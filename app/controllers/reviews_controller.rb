@@ -45,6 +45,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @trust_id = 11 #debugging placeholder value
   end
 
   # POST /reviews
