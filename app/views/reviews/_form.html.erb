@@ -44,11 +44,11 @@
             <div>
               <p>Star Ratings are a simple and quick way to rate a system</p>
             </div>
-            <% unless @review.star_rating.nil? || @rview.star_rating == 0 %>
+            <% unless @review.star_rating.nil? || @review.star_rating == 0 %>
               <div class="form-group">
                 <div id="star-rating" class="star-rating" data-score="<%= @review.star_rating %>" ></div>
               </div>
-            <% else %>222
+            <% else %>
               <div class="form-group">
                 <div id='star-rating'></div>
               </div>
