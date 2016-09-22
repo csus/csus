@@ -1,14 +1,10 @@
 <div class="panel panel-default">
+  
   <div class="panel-heading">
-
     <p class="lead">Your free text comments about the system are powerful indicators of how usable it is</p></div>
-
     <%= f.text_area :review_positive_text, class: "form-control", label: "What do you like most about the system?", rows: "5" %>
-
     <%= f.text_area :review_negative_text, class: "form-control", label: "What would you change about the system?", rows: "5" %>
-
   </div>
-
 
   <div class="actions">
     <%= f.submit "Submit Your Review", class: "btn btn-primary" %>
